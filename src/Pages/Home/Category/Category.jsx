@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import { FreeMode, Pagination } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -20,35 +20,34 @@ const Category = () => {
             heading={"ORDER ONLINE"}
             ></SectionTitle>
             <Swiper
-               autoplay={{ delay: 2000 }} 
                 slidesPerView={4}
                 spaceBetween={30}
-                centeredSlides={true}
+                freeMode={true}
                 pagination={{
                     clickable: true,
                 }}
-                modules={[Pagination]}
-                className="mySwiper mb-24"
+                modules={[FreeMode, Pagination]}
+                className="mySwiper my-10"
             >
                 <SwiperSlide>
                     <img src={slide1} alt="" />
-                    <h3 className="text-3xl text-white uppercase text-center -mt-12">Salad</h3>
+                    <h3 className="text-center text-4xl uppercase text-white -mt-16">Grill Stick</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide2} alt="" />
-                    <h3 className="text-3xl text-white uppercase text-center -mt-12">Pizza</h3>
+                    <h3 className="text-center text-4xl uppercase text-white -mt-16">Hot Dogs</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide3} alt="" />
-                    <h3 className="text-3xl text-white uppercase text-center -mt-12">Soups</h3>
+                    <h3 className="text-center text-4xl uppercase text-white -mt-16">Grill Veg</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide4} alt="" />
-                    <h3 className="text-3xl text-white uppercase text-center -mt-12">Desserts</h3>
+                    <h3 className="text-center text-4xl uppercase text-white -mt-16">Wings</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide5} alt="" />
-                    <h3 className="text-3xl text-white uppercase text-center -mt-12">Salad</h3>
+                    <h3 className="text-center text-4xl uppercase text-white -mt-16">Steaks</h3>
                 </SwiperSlide>
             </Swiper>
         </section>
