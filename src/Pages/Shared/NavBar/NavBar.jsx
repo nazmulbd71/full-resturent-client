@@ -7,6 +7,7 @@ const NavBar = () => {
         <li><Link className="hover:bg-lime-600 text-white" to="/menu">Our Menu</Link></li>
         <li><Link className="hover:bg-lime-600 text-white" to="/order/salad">Order Food</Link></li>
         <li><Link className="hover:bg-lime-600 text-white" to="/contact">Contact Us</Link></li>
+        <li><Link className="hover:bg-lime-600 text-white" to="/login">Login</Link></li>
     </>
     return (
         <div>
