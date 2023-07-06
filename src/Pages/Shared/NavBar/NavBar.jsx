@@ -1,31 +1,39 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { FaShoppingCart } from 'react-icons/fa';
 
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext)
 
-const handleLogOut = ()=>{
-    logOut()
-    .then(()=>{})
-    .catch(error => console.log(error))
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
 
-}
+    }
 
     const navOptions = <>
-    
-    <button className="btn btn-ghost"> <Link to="/">Home</Link></button>
-    <button className="btn btn-ghost"> <Link to="/menu">Our Menu</Link></button>
-    <button className="btn btn-ghost"> <Link to="/order/salad">Order Food</Link></button>
-    <button className="btn btn-ghost">  <Link to="/contact">Contact Us</Link></button>
 
+        <button className="btn btn-ghost"> <Link to="/">Home</Link></button>
+        <button className="btn btn-ghost"> <Link to="/menu">Our Menu</Link></button>
+        <button className="btn btn-ghost"> <Link to="/order/salad">Order Food</Link></button>
+        <button className="btn btn-ghost">  <Link to="/contact">Contact Us</Link></button>
+        <li>
+            <Link to="/">
+                <button className="btn gap-2">
+                    <FaShoppingCart></FaShoppingCart>
+                    <div className="badge badge-secondary">+0</div>
+                </button>
+            </Link>
+        </li>
         {
             user ? <>
-            <span>{user?.displayName}</span>
-             <button onClick={handleLogOut} className="btn btn-ghost">Log Out</button>
+                {/* <span>{user?.displayName}</span> */}
+                <button onClick={handleLogOut} className="btn btn-ghost">Log Out</button>
             </> : <>
-            <button className="btn btn-ghost"> <Link to="/login">Login</Link></button>
+                <button className="btn btn-ghost"> <Link to="/login">Login</Link></button>
             </>
         }
     </>
