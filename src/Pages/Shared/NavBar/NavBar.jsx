@@ -1,13 +1,33 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+const handleLogOut = ()=>{
+    logOut()
+    .then(()=>{})
+    .catch(error => console.log(error))
+
+}
+
     const navOptions = <>
-        <li><Link className="hover:bg-lime-600 text-white" to="/">Home</Link></li>
-        <li><Link className="hover:bg-lime-600 text-white" to="/menu">Our Menu</Link></li>
-        <li><Link className="hover:bg-lime-600 text-white" to="/order/salad">Order Food</Link></li>
-        <li><Link className="hover:bg-lime-600 text-white" to="/contact">Contact Us</Link></li>
-        <li><Link className="hover:bg-lime-600 text-white" to="/login">Login</Link></li>
+    
+    <button className="btn btn-ghost"> <Link to="/">Home</Link></button>
+    <button className="btn btn-ghost"> <Link to="/menu">Our Menu</Link></button>
+    <button className="btn btn-ghost"> <Link to="/order/salad">Order Food</Link></button>
+    <button className="btn btn-ghost">  <Link to="/contact">Contact Us</Link></button>
+
+        {
+            user ? <>
+            <span>{user?.displayName}</span>
+             <button onClick={handleLogOut} className="btn btn-ghost">Log Out</button>
+            </> : <>
+            <button className="btn btn-ghost"> <Link to="/login">Login</Link></button>
+            </>
+        }
     </>
     return (
         <div>
@@ -25,7 +45,7 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                         {navOptions}
+                        {navOptions}
                     </ul>
                 </div>
                 <div className="navbar-end">
