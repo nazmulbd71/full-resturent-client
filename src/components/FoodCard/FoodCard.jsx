@@ -14,7 +14,7 @@ const FoodCard = ({ item }) => {
 
     const handleAddToCart = item => {
         console.log(item)
-        const cartItem = {menuItemId: _id, name,image,price,email: user.email}
+        const cartItem = {menuItemId: _id, name,image,price,email: user?.email}
         if (user && user.email) {
             fetch('http://localhost:5000/carts',{
                 method:"POST",
