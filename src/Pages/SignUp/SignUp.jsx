@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
@@ -114,7 +115,8 @@ const SignUp = () => {
                                 <input className="btn btn-primary" type="submit" value="Sing Up" />
                             </div>
                         </form>
-                        <p><small>Already have an account? <Link className='underline' to="/login">please Login</Link></small></p>
+                        <p className="mx-auto"><small>Already have an account? <Link className='underline' to="/login">please Login</Link></small></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
