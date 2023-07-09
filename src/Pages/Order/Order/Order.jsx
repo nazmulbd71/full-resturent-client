@@ -19,6 +19,7 @@ const Order = () => {
     const salad = menu.filter(item => item.category === "salad")
     const pizza = menu.filter(item => item.category === "pizza")
     const drinks = menu.filter(item => item.category === "drinks")
+    const desi = menu.filter(item => item.category === "Desi")
 
     return (
         <div>
@@ -34,6 +35,7 @@ const Order = () => {
                     <Tab>Soups</Tab>
                     <Tab>Desserts</Tab>
                     <Tab>Drinks</Tab>
+                    <Tab>Desi</Tab>
                 </TabList>
 
                 <TabPanel><OrderTab items={salad}></OrderTab></TabPanel>
@@ -41,6 +43,7 @@ const Order = () => {
                 <TabPanel><OrderTab items={soup}></OrderTab></TabPanel>
                 <TabPanel><OrderTab items={desserts}></OrderTab></TabPanel>
                 <TabPanel><OrderTab items={drinks}></OrderTab></TabPanel>
+                <TabPanel><OrderTab items={desi}></OrderTab></TabPanel>
             </Tabs>
         </div>
     );

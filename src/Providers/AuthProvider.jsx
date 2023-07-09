@@ -23,9 +23,9 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const googleSignIn = () =>{
+    const googleSignIn = () => {
         setLoading(true)
-        return signInWithPopup(auth,googleProvider)
+        return signInWithPopup(auth, googleProvider)
     }
 
     const logOut = () => {
@@ -57,8 +57,6 @@ const AuthProvider = ({ children }) => {
             else {
                 localStorage.removeItem('access-token')
             }
-
-            setLoading(false)
         })
         return () => {
             unsubscribe();

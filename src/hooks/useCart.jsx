@@ -1,20 +1,30 @@
 import { useQuery } from '@tanstack/react-query'
-import { useContext } from 'react';
-import { AuthContext } from '../Providers/AuthProvider';
+import useAxiosSecure from './useAxiosSecure';
+import useAuth from './useAuth';
 
 
 const useCart = () => {
-    const { user } = useContext(AuthContext);
-    const token = localStorage.getItem('access-token');
+    const { user, loading } = useAuth();
 
-    const {refetch,  data: cart =[]} = useQuery({
+    // const token = localStorage.getItem('access-token');
+
+    const [axiosSecure] = useAxiosSecure()
+    const { refetch, data: cart = [] } = useQuery({
         queryKey: ['carts', user?.email],
+        enabled: !loading,
+
+        // if i don't need to axios the I can uncomment this 2 things
+        // queryFn: async () => {
+        //     const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
+        //         headers: {
+        //             authorization: `bearer ${token}`
+        //         }
+        //     })
+
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`
-            ,{headers:{
-                authorization: `bearer ${token}`
-            }})
-            return res.json();
+            const res = await axiosSecure(`/carts?email=${user?.email}`)
+            console.log('res from axios', res)
+            return res.data;
         },
     })
 
