@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const NavBar = () => {
-    const { user, logOut } = useContext(AuthContext)
-    const [cart] = useCart()
+    const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+    const [cart] = useCart();
 
     const handleLogOut = () => {
         logOut()
@@ -21,7 +23,10 @@ const NavBar = () => {
         <button className="btn btn-ghost"> <Link to="/">Home</Link></button>
         <button className="btn btn-ghost"> <Link to="/menu">Our Menu</Link></button>
         <button className="btn btn-ghost"> <Link to="/order/salad">Order Food</Link></button>
-        <button className="btn btn-ghost">  <Link to="/contact">Contact Us</Link></button>
+        {
+            isAdmin ? <button className="btn btn-ghost">  <Link to="/dashboard/adminhome">Dashboard</Link></button> :
+                <button className="btn btn-ghost">  <Link to="/dashboard/userhome">Dashboard</Link></button>
+        }
         <li>
             <Link to="/dashboard/mycart">
                 <button className="btn gap-2">

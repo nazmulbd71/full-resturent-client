@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const MyCart = () => {
     const [cart, refetch] = useCart()
     const total = cart.reduce((sum, item) => item.price + sum, 0)
-    const newTotal = total.toFixed(2)
+    const newTotal = parseFloat(total.toFixed(2))
 
     const handleDelete = item => {
         Swal.fire({
